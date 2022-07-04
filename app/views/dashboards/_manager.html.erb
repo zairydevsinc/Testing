@@ -1,0 +1,11 @@
+<%= render 'dashboards/header' %>
+
+<h1> This is Managers Window  </h1>
+
+<h1>Projects</h1>
+<a href="<%= projects_path %>">All Projects</a>
+<% if policy(Project).new? %>
+    <a href="<%= new_project_path %>">create new Project</a>
+<% end %>
+
+

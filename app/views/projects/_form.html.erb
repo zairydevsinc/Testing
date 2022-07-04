@@ -1,0 +1,15 @@
+
+<h1>Project</h1>
+<%= form_with model: project, local: true do |form| %>
+  <label for="title">Project Title</label>
+  <%= form.text_field :title, class: 'form-control', placeholder: 'Project Title' %>
+  <label for="description">Project Description</label>
+  <%= form.text_area :description, id: 'editor', class: 'form-control' %>
+
+
+  <div class="mt-5 pt-5">
+    <%= select_tag(:users, options_from_collection_for_select(user.where.not(:usertype =>'Manager'),"id","name"), options = {multiple: true,class:'form-control'}) %>
+    <%= form.collection_select :users, user.where.not(:usertype => 'Manager'), :id, :usertype, {selected: @project.assigned_user.ids}, {multiple: true, id: "sel1", class: "form-control selectpicker", placeholder: "Select users.", include_blank: false, include_hidden: false} %>
+  </div>
+  <%= form.submit %>
+<% end %>
