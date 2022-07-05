@@ -1,0 +1,92 @@
+<%= render 'dashboards/header' %>
+
+
+
+<h2><%= @bug.title %></h2>
+
+
+<h2>Reprted by: <%= @bug.reported_by.name %></h2>
+
+<hr class="hr-dark"/>
+
+<p><%= @bug.description %></p>
+
+<% if @bug.image.attached? %>
+
+<%= image_tag(@bug.image)%>
+<br>
+
+<% end %>
+
+
+<% if policy(@bug).delete? %>
+  <%= link_to [@project, @bug], method: :delete, data: {confirm: "Are you sure you want to delete this user?"} do %>
+   Delete
+  <% end %>
+<% end %>
+<% if policy(@bug).edit? %>
+  <%= link_to edit_project_bug_path(@project, @bug) do %>
+   Edit
+  <% end %>
+<% end %>
+
+
+
+<h3> Summary</h3>
+<ul>
+    <li class="list-group-item">
+        <% if @bug.type == "Bug" %>
+          <i >Bug</i>
+        <% elsif @bug.type == "Feature" %>
+          <i >Feature</i>
+        <%end%>
+    </li>
+
+    <li class="list-group-item"><i> Taken:
+      <% if @bug.assigned_to_id? %>
+        <%= @bug.assigned_to.name %>
+      <% else %>
+        Not Taken
+      <% end %>
+    </i>
+
+    <li class="list-group-item">
+      <i > <%= @bug.deadline %></i>
+    </li>
+
+    <li class="list-group-item">
+      <% if @bug.status == "Resolved" %>
+        <i > Resolved</i>
+      <% elsif @bug.status == "Started" %>
+        <i > Started</i>
+      <% else %>
+        <i> New</i>
+      <% end %>
+    </li>
+
+    <% if (!@bug.assigned_to_id? && current_user.usertype == "Developer") %>
+      <li class="list-group-item">
+        <%= form_for assign_path(@bug.project, @bug) do |form| %>
+          <%= form.submit "Assign the bug to Yourself"%>
+        <% end %>
+      </li>
+    <% end %>
+
+
+    <% if @bug.assigned_to == current_user %>
+      <li class="list-group-item">
+        <%= form_with url: status_path(@bug.project, @bug) do |form| %>
+          <%= form.select :status, ['New', 'Started','Resolved']%>
+          <%= form.submit "Change Status"%>
+        <% end %>
+      </li>
+    <% end %>
+</ul>
+
+
+
+<%= link_to 'Back', project_bugs_path %>
+
+
+
+

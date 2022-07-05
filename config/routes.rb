@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   root 'dashboards#home'
 
   get '/dashboard', to: 'dashboard#index', as: :user_root
-  post '/projects/:project_id/bugs/:id', to: 'bugs#pick', as: :pick
-  post '/projects/:project_id/bugs/:id/drop', to: 'bugs#drop', as: :drop
+  post '/projects/:project_id/bugs/:id', to: 'bugs#Bug_Assignment', as: :assign
   post '/projects/:project_id/bugs/:id/status', to: 'bugs#status', as: :status
 
   devise_for :users, :controllers => {

@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    # debugger
     @project = Project.new(project_params)
     @project.creator = current_user
     if params[:project][:users].any?
@@ -43,6 +44,10 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    if params[:project][:users].any?
+      params[:project][:users].reject!(&:empty?)
+      @project.assigned_user = User.find( params[:project][:users])
+    end
     authorize @project
       if @project.update(project_params)
         redirect_to @project
@@ -54,10 +59,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    respond_to do |format|
-      format.html {redirect_to projects_url, notice: 'Project was successfully destroyed.'}
-      format.json {head :no_content}
-    end
+    redirect_to projects_url, notice: 'Project is successfully destroyed.'
   end
 
 
