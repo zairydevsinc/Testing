@@ -1,3 +1,5 @@
+<%= render 'dashboards/header' %>
+
 <% if current_user && current_user.usertype == 'Developer' %>
 
 <%= render 'dashboards/developer' , projects: @projects %>

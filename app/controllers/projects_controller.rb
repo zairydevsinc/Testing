@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def new
@@ -33,9 +34,9 @@ class ProjectsController < ApplicationController
       @project.assigned_user = User.find( params[:project][:users])
     end
     authorize @project
-    # respond_to do |format|
+    # debugger
       if @project.save
-        redirect_to @project
+        redirect_to @project, notice: 'Project is successfully Created.'
       else
         render :new, status: :unprocessable_entity
       end
@@ -50,7 +51,7 @@ class ProjectsController < ApplicationController
     end
     authorize @project
       if @project.update(project_params)
-        redirect_to @project
+        redirect_to @project, notice: 'Project is successfully Updated.'
       else
         render :edit
       end
@@ -59,7 +60,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    redirect_to projects_url, notice: 'Project is successfully destroyed.'
+    redirect_to projects_url, notice: 'Project is successfully Destroyed.'
   end
 
 

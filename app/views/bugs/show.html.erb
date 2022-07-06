@@ -5,17 +5,15 @@
 <h2><%= @bug.title %></h2>
 
 
-<h2>Reprted by: <%= @bug.reported_by.name %></h2>
+<h2>Reported by: <%= @bug.reported_by.name %></h2>
 
 <hr class="hr-dark"/>
 
 <p><%= @bug.description %></p>
 
 <% if @bug.image.attached? %>
-
 <%= image_tag(@bug.image)%>
 <br>
-
 <% end %>
 
 
@@ -34,11 +32,11 @@
 
 <h3> Summary</h3>
 <ul>
-    <li class="list-group-item">
-        <% if @bug.type == "Bug" %>
-          <i >Bug</i>
-        <% elsif @bug.type == "Feature" %>
-          <i >Feature</i>
+    <li class="list-group-item" >
+        <% if @bug.bugtype == "Bug" %>
+          <i id = "check" >Bug</i>
+        <% elsif @bug.bugtype == "Feature" %>
+          <i id = "check" >Feature</i>
         <%end%>
     </li>
 

@@ -24,6 +24,13 @@ class ProjectPolicy < ApplicationPolicy
     false
   end
 
+  def show?
+    if @user.usertype =='Manager' && @user == @project.creator
+      return true
+    end
+    false
+  end
+
 
   def update?
     if @user == @project.creator && @user.usertype == 'Manager'

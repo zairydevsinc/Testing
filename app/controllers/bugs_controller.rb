@@ -17,25 +17,29 @@ class BugsController < ApplicationController
   end
 
   def create
+    # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.new(bug_params)
     @bug.reported_by = current_user
+
     if @bug.save
-      redirect_to [@project, @bug]
+      redirect_to [@project, @bug], notice: 'Bug successfully Reported.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     # authorize @bug
   end
 
   def update
+    # debugger
     @project = Project.find(params[:project_id])
-    @bug = Bug.find(params[:id])
+    @bug = @project.bugs.find(params[:id])
     if @bug.update(bug_params)
       redirect_to [@project, @bug]
     else
@@ -79,6 +83,6 @@ class BugsController < ApplicationController
 
   private
   def bug_params
-    params.require(:bug).permit(:title, :description, :deadline, :type, :image )
+    params.require(:bug).permit(:title, :description, :deadline, :bugtype, :status, :image )
   end
 end

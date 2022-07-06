@@ -1,5 +1,6 @@
 <%= render 'dashboards/header' %>
 
+
 <h1> Project: <%= @project.title %> </h1>
 <% @bugs.each do |bug| %>
 
@@ -41,7 +42,7 @@
         <i> New</i>
       <% elsif bug.status == "Started" %>
         <i> Started</i>
-      <% else %>
+      <% elsif bug.status == "Resolved" %>
         <i> Resolved</i>
       <% end %>
     </li>
