@@ -1,10 +1,28 @@
 
-<h1>Project</h1>
 <%= form_with model: project, local: true do |form| %>
-  <label for="title">Project Title</label>
-  <%= form.text_field :title, class: 'form-control', placeholder: 'Project Title' %>
-  <label for="description">Project Description</label>
-  <%= form.text_area :description, class: 'form-control' %>
-  <%= form.collection_select :users, user.where.not(:usertype => 'Manager'), :id, :name, {selected: @project.assigned_user.ids}, {multiple: true} %>
-  <%= form.submit %>
+  <div class="field form-group ">
+    <label for="title">Project Title</label>
+    <%= form.text_field :title, class: 'form-control', placeholder: 'Project Title' %>
+  </div>
+
+  <div class="field form-group ">
+    <label for="description">Project Description</label>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+
+
+  <div class="field form-group ">
+    <label for="users">Select Users</label>
+    <br/>
+    <%= form.collection_select :users, user.where.not(:usertype => 'Manager'), :id, :name, {selected: @project.assigned_user.ids}, {multiple: true} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Enter", class: "btn btn-secondary" %>
+  </div>
+
 <% end %>
+<br/>
+
+<%= link_to 'Back', projects_path %>

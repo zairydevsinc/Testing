@@ -25,7 +25,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def show?
-    if @user.usertype =='Manager' && @user == @project.creator
+    if @user == @project.creator || @project.assigned_user.include?(@user) || @user.usertype == 'QA'
       return true
     end
     false
