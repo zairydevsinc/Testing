@@ -27,12 +27,10 @@
     <%= form.select :status, ['New', 'Started' , 'Resolved'], selected: 'new' %>
   </div>
 
-  <% if !(params[:action] == 'edit') %>
   <div class="field form-group " >
     <%= form.label :deadline %><br>
     <%= form.date_select :deadline %>
   </div>
-  <% end %>
 
   <div class="field form-group " >
     <%= form.label :description %><br>
@@ -52,4 +50,8 @@
 
 <% end %>
 
+<br/>
+
+<button>
 <%= link_to 'Back', project_bugs_path %>
+</button>

@@ -66,3 +66,7 @@ gem "pundit", "~> 2.2"
 gem 'devise'
 
 gem "jquery-rails", "~> 4.5"
+
+gem 'pg'
+
+gem 'yaml_db'

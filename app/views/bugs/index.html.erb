@@ -40,13 +40,7 @@
         <% end %>
       </li>
       <li class="list-group-item">
-        <% if bug.status == "New" %>
-          <i> New</i>
-        <% elsif bug.status == "Started" %>
-          <i> Started</i>
-        <% elsif bug.status == "Resolved" %>
-          <i> Resolved</i>
-        <% end %>
+        <i> <%= bug.status %> </i>
       </li>
       <li class="list-group-item">deadline: <%= bug.deadline%></li>
     </ul>
@@ -72,5 +66,7 @@
     </ol>
 </ul>
 
+<button>
 <%= link_to 'Back', projects_path %>
+</button>
 </div>

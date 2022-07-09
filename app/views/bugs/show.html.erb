@@ -55,13 +55,7 @@
       <i > <%= @bug.deadline %></i>
     </li>
     <li class="list-group-item">
-       <% if @bug.status == "Resolved" %>
-        <i > Resolved</i>
-      <% elsif @bug.status == "Started" %>
-        <i > Started</i>
-      <% else %>
-        <i> New</i>
-      <% end %>
+      <i> <%= @bug.status %> </i>
     </li>
     <% if (!@bug.assigned_to_id? && current_user.usertype == "Developer") %>
       <li class="list-group-item">
@@ -73,7 +67,11 @@
     <% if @bug.assigned_to == current_user %>
       <li class="list-group-item">
         <%= form_with url: status_path(@bug.project, @bug) do |form| %>
-          <%= form.select :status, ['New', 'Started','Resolved']%>
+          <% if @bug.bugtype == "Bug" %>
+            <%= form.select :status, ['New', 'Started','Resolved']%>
+          <% else %>
+            <%= form.select :status, ['New', 'Started','Completed']%>
+          <% end %>
           <%= form.submit "Change Status"%>
         <% end %>
       </li>
@@ -86,8 +84,9 @@
 
 
 <br/>
+<button>
 <%= link_to 'Back', project_bugs_path %>
-
+</button>
 
 
 

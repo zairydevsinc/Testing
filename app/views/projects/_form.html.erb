@@ -15,7 +15,7 @@
   <div class="field form-group ">
     <label for="users">Select Users</label>
     <br/>
-    <%= form.collection_select :users, user.where.not(:usertype => 'Manager'), :id, :name, {selected: @project.assigned_user.ids}, {multiple: true} %>
+    <%= form.collection_check_boxes(:object_id, user.where.not(:usertype => 'Manager'), :id, :name, {selected: @project.assigned_user.ids}, {multiple: true} ) %>
   </div>
 
   <div class="actions">
@@ -25,4 +25,6 @@
 <% end %>
 <br/>
 
+<button>
 <%= link_to 'Back', projects_path %>
+</button>

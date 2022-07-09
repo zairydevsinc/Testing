@@ -29,9 +29,9 @@ class ProjectsController < ApplicationController
     # debugger
     @project = Project.new(project_params)
     @project.creator = current_user
-    if params[:project][:users].any?
-      params[:project][:users].reject!(&:empty?)
-      @project.assigned_user = User.find( params[:project][:users])
+    if params[:project][:object_id].any?
+      params[:project][:object_id].reject!(&:empty?)
+      @project.assigned_user = User.find( params[:project][:object_id])
     end
     authorize @project
     # debugger
@@ -45,9 +45,9 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    if params[:project][:users].any?
-      params[:project][:users].reject!(&:empty?)
-      @project.assigned_user = User.find( params[:project][:users])
+    if params[:project][:object_id].any?
+      params[:project][:object_id].reject!(&:empty?)
+      @project.assigned_user = User.find( params[:project][:object_id])
     end
     authorize @project
       if @project.update(project_params)
