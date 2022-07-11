@@ -26,7 +26,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    # debugger
     @project = Project.new(project_params)
     @project.creator = current_user
     if params[:project][:object_id].any?
@@ -34,7 +33,6 @@ class ProjectsController < ApplicationController
       @project.assigned_user = User.find( params[:project][:object_id])
     end
     authorize @project
-    # debugger
       if @project.save
         redirect_to @project, notice: 'Project is successfully Created.'
       else

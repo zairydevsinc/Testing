@@ -5,7 +5,6 @@ class BugsController < ApplicationController
   end
 
   def show
-    # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
   end
@@ -17,7 +16,6 @@ class BugsController < ApplicationController
   end
 
   def create
-    # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.new(bug_params)
     @bug.reported_by = current_user
@@ -30,14 +28,12 @@ class BugsController < ApplicationController
   end
 
   def edit
-    # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     authorize @bug
   end
 
   def update
-    # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     if @bug.update(bug_params)
@@ -48,7 +44,6 @@ class BugsController < ApplicationController
   end
 
   def destroy
-    # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     @bug.destroy
