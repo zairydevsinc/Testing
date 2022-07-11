@@ -13,9 +13,13 @@
 
 
   <div class="field form-group ">
-    <label for="users">Select Users</label>
+    <label for="users"><b>Select Developers</b></label>
     <br/>
-    <%= form.collection_check_boxes(:object_id, user.where.not(:usertype => 'Manager'), :id, :name, {selected: @project.assigned_user.ids}, {multiple: true} ) %>
+    <%= form.collection_check_boxes(:object_id, user.where(:usertype => 'Developer'), :id, :name, {selected: @project.assigned_user.ids}, {multiple: true} ) %>
+    <br/>
+    <label for="users"><b>Select QA</b></label>
+    <br/>
+    <%= form.collection_check_boxes(:object_id, user.where(:usertype => 'QA'), :id, :name, {selected: @project.assigned_user.ids}, {multiple: true} ) %>
   </div>
 
   <div class="actions">

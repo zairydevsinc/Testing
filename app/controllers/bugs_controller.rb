@@ -13,7 +13,7 @@ class BugsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.new
-    # authorize @bug
+    authorize @bug
   end
 
   def create
@@ -33,7 +33,7 @@ class BugsController < ApplicationController
     # debugger
     @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
-    # authorize @bug
+    authorize @bug
   end
 
   def update
@@ -53,7 +53,6 @@ class BugsController < ApplicationController
     @bug = @project.bugs.find(params[:id])
     @bug.destroy
     redirect_to [@project, Bug] , notice: 'Bug successfully destroyed.'
-    # redirect_to bugs_url, notice: 'Bug successfully destroyed.'
   end
 
   def Bug_Assignment

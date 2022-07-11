@@ -1,19 +1,12 @@
-<%# <%= render 'dashboards/header' %>
 
 <% if current_user && current_user.usertype == 'Developer' %>
-
 <%= render 'dashboards/developer' , projects: @projects %>
-<%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 
 <% elsif current_user && current_user.usertype == 'Manager'%>
-
 <%= render 'dashboards/manager' , projects: @projects %>
-<%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 
 <% elsif current_user && current_user.usertype == 'QA' %>
-
 <%= render 'dashboards/qa' , projects: @projects%>
-<%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 
 <% else %>
 

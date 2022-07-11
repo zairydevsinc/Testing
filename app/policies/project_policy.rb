@@ -17,6 +17,7 @@ class ProjectPolicy < ApplicationPolicy
     end
     false
   end
+
   def create?
     if @user.usertype =='Manager'
       return true
@@ -53,10 +54,4 @@ class ProjectPolicy < ApplicationPolicy
     false
   end
 
-  def can_create_bug?
-    if @user.usertype =='QA' && @user.project_assigned.include?(@project)
-      return true
-    end
-    false
-    end
 end

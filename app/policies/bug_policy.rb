@@ -33,7 +33,6 @@ class BugPolicy < ApplicationPolicy
     false
   end
 
-  # @return [Object]
   def delete?
     if @bug.reported_by == @user
       return true
