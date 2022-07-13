@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = {host: 'bugzilla-devv.herokuapp.com', protocol: "https"}
+  config.action_mailer.default_url_options = {host: 'testingbugzilla.herokuapp.com', protocol: "https"}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
@@ -9,7 +9,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:             'smtp.gmail.com',
     port:                 587,
-    domain:               'bugzilla-devv.herokuapp.com',
+    domain:               'testingbugzilla.herokuapp.com',
     user_name:            'syed.uzair@devsinc.com',
     password:             'uysglcrngvpcwddb',
     authentication:       'plain',
