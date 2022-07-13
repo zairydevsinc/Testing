@@ -3,7 +3,7 @@
 <div class="card" style="width: 18rem;">
   <div  class= " center card-img-top " >
     <% if @bug.image.attached? %>
-      <%= cloudinary_url("storage/"+@bug.image.key) %>
+      <%= cl_image_tag("storage/"+@bug.image.key) %>
       <%# a little testing %>
       <br>
     <% end %>
