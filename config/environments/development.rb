@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # config.hosts << "http://127.0.0.1:3000"
 
-  config.action_mailer.default_url_options = {host: 'testingbugzilla.herokuapp.com'}
+  config.action_mailer.default_url_options = {host: 'http://127.0.0.1:3000'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
@@ -10,7 +10,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:             'smtp.gmail.com',
     port:                 587,
-    domain:               'testingbugzilla.herokuapp.com',
+    domain:               '127.0.0.1:3000',
     user_name:            'syed.uzair@devsinc.com',
     password:             'uysglcrngvpcwddb',
     authentication:       'plain',
