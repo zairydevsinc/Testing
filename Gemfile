@@ -74,3 +74,5 @@ gem "jquery-rails", "~> 4.5"
 gem 'pg'
 
 gem 'yaml_db'
+
+gem 'cloudinary'
