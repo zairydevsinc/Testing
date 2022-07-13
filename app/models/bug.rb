@@ -6,7 +6,7 @@ class Bug < ApplicationRecord
 
   validates :title, :status, :bugtype, presence: true
   validates :title, uniqueness: true
-  # validate :correct_image_type
+  validate :correct_image_type
 
 
   def correct_image_type
