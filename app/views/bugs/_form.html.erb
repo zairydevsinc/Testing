@@ -2,7 +2,6 @@
 
 <%= form_with(model: [@project, @bug], local: true) do |form| %>
 
-
   <% if @bug.errors.any? %>
     <ul>
     <% @bug.errors.full_messages.each do |message| %>
@@ -20,7 +19,6 @@
     <%= form.label :bugtype %><br>
     <%= form.select :bugtype, ['Bug', 'Feature'], selected: 'Bug' %>
   </div>
-
 
   <div class="field form-group ">
     <%= form.label :status %><br>

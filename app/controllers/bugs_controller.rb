@@ -50,7 +50,7 @@ class BugsController < ApplicationController
     redirect_to [@project, Bug] , notice: 'Bug successfully destroyed.'
   end
 
-  def Bug_Assignment
+  def bug_assignment
     @project = Project.find(params[:project_id])
     if @project
       @bug = @project.bugs.find(params[:id])
