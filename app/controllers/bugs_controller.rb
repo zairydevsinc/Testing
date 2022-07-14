@@ -1,22 +1,20 @@
 class BugsController < ApplicationController
+  before_action :bug_project, only: %i[index show new create edit update destroy bug_assignment status]
+
   def index
-    @project = Project.find(params[:project_id])
     @bugs = @project.bugs
   end
 
   def show
-    @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
   end
 
   def new
-    @project = Project.find(params[:project_id])
     @bug = @project.bugs.new
     authorize @bug
   end
 
   def create
-    @project = Project.find(params[:project_id])
     @bug = @project.bugs.new(bug_params)
     @bug.reported_by = current_user
 
@@ -28,13 +26,11 @@ class BugsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     authorize @bug
   end
 
   def update
-    @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     if @bug.update(bug_params)
       redirect_to [@project, @bug]
@@ -44,14 +40,12 @@ class BugsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     @bug.destroy
     redirect_to [@project, Bug] , notice: 'Bug successfully destroyed.'
   end
 
   def bug_assignment
-    @project = Project.find(params[:project_id])
     if @project
       @bug = @project.bugs.find(params[:id])
       if @bug
@@ -65,7 +59,6 @@ class BugsController < ApplicationController
   end
 
   def status
-    @project = Project.find(params[:project_id])
     @bug = @project.bugs.find(params[:id])
     if @project && @bug
       @bug.status = params[:status]
@@ -76,6 +69,12 @@ class BugsController < ApplicationController
 
 
   private
+
+  def bug_project
+    @project = Project.find(params[:project_id])
+  end
+
+
   def bug_params
     params.require(:bug).permit(:title, :description, :deadline, :bugtype, :status, :image )
   end
