@@ -10,6 +10,8 @@ class Bug < ApplicationRecord
 
 
   def correct_image_type
-    validate_mime_type %w[image/png image/gif]
+    if image.attached? && !image.content_type.in?(%w[image/png image/gif])
+      errors.add(:image, 'Must be a PNG or GIF')
+    end
   end
 end
