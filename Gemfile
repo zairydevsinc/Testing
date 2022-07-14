@@ -64,3 +64,4 @@ gem 'pg'
 
 gem 'yaml_db'
 
+gem 'cloudinary'
