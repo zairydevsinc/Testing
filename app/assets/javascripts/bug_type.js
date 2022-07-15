@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', ()=> {
+document.addEventListener('turbolinks:load', ()=> {
   const bug = "Resolved"
   const feature = "Completed"
   const bugType = document.getElementById("bug_bugtype")
