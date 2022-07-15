@@ -33,11 +33,11 @@ class ProjectsController < ApplicationController
       @project.assigned_user = User.find( params[:project][:object_id])
     end
     authorize @project
-      if @project.save
-        redirect_to @project, notice: 'Project is successfully Created.'
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @project.save
+      redirect_to @project, notice: 'Project is successfully Created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -47,11 +47,11 @@ class ProjectsController < ApplicationController
       @project.assigned_user = User.find( params[:project][:object_id])
     end
     authorize @project
-      if @project.update(project_params)
-        redirect_to @project, notice: 'Project is successfully Updated.'
-      else
-        render :edit
-      end
+    if @project.update(project_params)
+      redirect_to @project, notice: 'Project is successfully Updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -1,5 +1,5 @@
 class BugsController < ApplicationController
-  before_action :bug_project, only: %i[index show new create edit update destroy bug_assignment status]
+  before_action :bug_project
 
   def index
     @bugs = @project.bugs

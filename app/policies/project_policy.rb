@@ -14,13 +14,15 @@ class ProjectPolicy < ApplicationPolicy
     if @user.usertype == 'Manager'
       return true
     end
+
     false
   end
 
   def create?
-    if @user.usertype =='Manager'
+    if @user.usertype == 'Manager'
       return true
     end
+
     false
   end
 
@@ -28,6 +30,7 @@ class ProjectPolicy < ApplicationPolicy
     if @user == @project.creator || @project.assigned_user.include?(@user) || @user.usertype == 'QA'
       return true
     end
+
     false
   end
 
@@ -36,6 +39,7 @@ class ProjectPolicy < ApplicationPolicy
     if @user == @project.creator && @user.usertype == 'Manager'
       return true
     end
+
     false
   end
 
@@ -43,6 +47,7 @@ class ProjectPolicy < ApplicationPolicy
     if @user == @project.creator && @user.usertype == 'Manager'
       return true
     end
+
     false
   end
 
@@ -50,6 +55,7 @@ class ProjectPolicy < ApplicationPolicy
     if @user == @project.creator && @user.usertype =='Manager'
       return true
     end
+
     false
   end
 
