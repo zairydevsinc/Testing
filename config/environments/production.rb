@@ -9,8 +9,8 @@ Rails.application.configure do
     address:             'smtp.gmail.com',
     port:                 587,
     domain:               'bugzilla-devv.herokuapp.com',
-    user_name:            GMAIL_ADMIN,
-    password:             GMAIL_PASS,
+    user_name:            'syed.uzair@devsinc.com',
+    password:             'uysglcrngvpcwddb',
     authentication:       'plain',
     enable_starttls_auto: true }
 
