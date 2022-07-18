@@ -67,13 +67,11 @@ class BugsController < ApplicationController
     redirect_to  [@project, @bug]
   end
 
-
   private
 
   def bug_project
     @project = Project.find(params[:project_id])
   end
-
 
   def bug_params
     params.require(:bug).permit(:title, :description, :deadline, :bugtype, :status, :image )

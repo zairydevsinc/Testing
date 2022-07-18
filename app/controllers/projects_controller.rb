@@ -60,7 +60,6 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'Project is successfully Destroyed.'
   end
 
-
   private
 
   def project_params

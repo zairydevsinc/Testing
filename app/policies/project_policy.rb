@@ -34,7 +34,6 @@ class ProjectPolicy < ApplicationPolicy
     false
   end
 
-
   def update?
     if @user == @project.creator && @user.usertype == 'Manager'
       return true
@@ -58,5 +57,4 @@ class ProjectPolicy < ApplicationPolicy
 
     false
   end
-
 end
